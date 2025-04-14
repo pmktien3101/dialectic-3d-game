@@ -10,9 +10,10 @@ import { Walls } from "./furniture/Walls"
 import { TeacherDesk } from "./furniture/TeacherDesk"
 import { Clock } from "./furniture/Clock"
 import { Bookshelf } from "./furniture/Bookshelf"
+import { Student } from "./characters/Student"
 
-function ClassroomScene() {
-  const clockRef = useRef(null)
+function ClassroomScene({ onStudentClick }) {
+  const clockRef = useRef()
 
   // Animate the clock
   useFrame(({ clock }) => {
@@ -46,6 +47,22 @@ function ClassroomScene() {
         )),
       )}
 
+      {/* Students */}
+      <Student
+        position={[-2, 0, 0.7]}
+        rotation={[0, Math.PI, 0]}
+        name="Anh Nguyễn Văn A"
+        isFemale={false}
+        onTooltipShown={() => onStudentClick("Anh Nguyễn Văn A")}
+      />
+      <Student
+        position={[0, 0, 0.7]}
+        rotation={[0, Math.PI, 0]}
+        name="Chị Nguyễn Thị B"
+        isFemale={true}
+        onTooltipShown={() => onStudentClick("Chị Nguyễn Thị B")}
+      />
+
       {/* Decorative elements */}
       <Clock position={[4.9, 2.5, 0]} rotation={[0, -Math.PI / 2, 0]} ref={clockRef} />
       <Bookshelf position={[-4.9, 0, 0]} rotation={[0, Math.PI / 2, 0]} />
@@ -66,3 +83,4 @@ function ClassroomScene() {
 }
 
 export default ClassroomScene
+
