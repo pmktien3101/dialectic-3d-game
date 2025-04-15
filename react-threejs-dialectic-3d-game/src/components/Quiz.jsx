@@ -158,7 +158,7 @@ export default function Quiz({ onComplete }) {
               transition: 'all 0.3s ease',
             }}
           >
-            Tiếp Tục
+            Chơi xong rồi giờ thì cùng học nhé 
           </button>
         </div>
       </div>
