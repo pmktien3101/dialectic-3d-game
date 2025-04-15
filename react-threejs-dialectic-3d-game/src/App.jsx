@@ -3,6 +3,8 @@ import MainMenu from "./components/MainMenu"
 import LevelSelection from "./components/LevelSelection"
 import Classroom from "./components/Classroom"
 import DialecticalMethodology from "./components/DialecticalMethodology"
+import CausalityMethodology from "./components/CausalityMethodology"
+import SocialLab from "./components/Sociallab"
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState("mainMenu")
@@ -16,7 +18,11 @@ function App() {
 
   const handleSelectLevel = (levelId) => {
     setSelectedLevel(levelId)
-    setCurrentScreen("classroom")
+    if (levelId === 2) { // If it's the causality level
+      setCurrentScreen("socialLab")
+    } else {
+      setCurrentScreen("classroom")
+    }
   }
 
   const handleQuizComplete = (score) => {
@@ -25,7 +31,11 @@ function App() {
       ...prev,
       [selectedLevel]: score
     }))
-    setCurrentScreen("dialecticalMethodology")
+    if (selectedLevel === 2) { // If it's the causality level
+      setCurrentScreen("causalityMethodology")
+    } else {
+      setCurrentScreen("dialecticalMethodology")
+    }
   }
 
   const handleContinueAfterMethodology = () => {
@@ -40,8 +50,12 @@ function App() {
         return <LevelSelection onSelectLevel={handleSelectLevel} quizScores={quizScores} />
       case "classroom":
         return <Classroom onReturnToLevelSelection={handleQuizComplete} />
+      case "socialLab":
+        return <SocialLab onComplete={handleQuizComplete} />
       case "dialecticalMethodology":
         return <DialecticalMethodology score={lastQuizScore} onContinue={handleContinueAfterMethodology} />
+      case "causalityMethodology":
+        return <CausalityMethodology onContinue={handleContinueAfterMethodology} />
       default:
         return <MainMenu onStartGame={handleStartGame} />
     }

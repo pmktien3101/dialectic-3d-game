@@ -5,23 +5,38 @@ import { motion, useInView } from "framer-motion"
 
 const concepts = [
   {
-    title: "Cái Riêng và Cái Chung",
+    title: "Khái Niệm Cơ Bản",
     icon: "concept",
     content: [
+        {
+            type: "definition",
+            title: "Nguyên nhân",
+            text: "là phạm trù dùng để chỉ sự tác động lẫn nhau giữa các mặt trong một sự vật hoặc giữa các sự vật với nhau, gây ra những biến đổi nhất định",
+          },
       {
         type: "definition",
-        title: "Cái riêng",
-        text: "Là phạm trù triết học dùng để chỉ sự vật, hiện tượng, một quá trình nhất định",
+        title: "Kết quả",
+        text: "Là những biến đổi xuất hiện do tác động của nguyên nhân",
       },
       {
         type: "definition",
-        title: "Cái chung",
-        text: "Là phạm trù triết học dùng để chỉ những mặt, những thuộc tính giống nhau và lặp lại ở nhiều sự vật, hiện tượng",
-      },
+        title: "Quan hệ biện chứng",
+        text: "Mối liên hệ giữa nguyên nhân và kết quả là mối liên hệ khách quan",
+      }
+    ],
+  },
+  {
+    title: "Tính Chất Của Mối Quan Hệ",
+    icon: "relationship",
+    content: [
       {
-        type: "definition",
-        title: "Cái đơn nhất",
-        text: "Là những đặc tính, tính chất chỉ tồn tại ở một sự vật, hiện tượng và không lặp lại ở sự vật khác",
+        type: "relationship",
+        points: [
+          "Nguyên nhân và kết quả có thể chuyển hóa lẫn nhau",
+          "Sự tác động của nguyên nhân đến kết quả có thể theo hai hướng: thuận, nghịch",
+          "Một nguyên nhân có thể sinh ra nhiều kết quả",
+          "Một kết quả có thể do nhiều nguyên nhân tạo ra",
+        ],
       },
     ],
   },
@@ -31,26 +46,11 @@ const concepts = [
     content: [
       {
         type: "example",
-        title: "Ví dụ về con người",
+        title: "Cuộc cách mạng công nghệ thông tin",
         points: [
-          "Cái chung: Những thuộc tính tự nhiên và xã hội khiến con người khác với động vật, như khả năng tư duy, ngôn ngữ, văn hóa, đạo đức,...",
-          "Cái riêng: Mỗi con người là một cá thể riêng biệt với những đặc điểm riêng về ngoại hình, tính cách, sở thích,...",
-          "Cái đơn nhất: Ở mỗi con người có những thuộc tính không lặp lại ở người khác như cấu tạo gen độc đáo, nhân cách riêng biệt, năng lực đặc thù, hoàn cảnh sống cụ thể,...",
-        ],
-      },
-    ],
-  },
-  {
-    title: "Mối Liên Hệ Biện Chứng",
-    icon: "relationship",
-    content: [
-      {
-        type: "relationship",
-        points: [
-          "Cái chung chỉ tồn tại trong cái riêng, thông qua cái riêng mà biểu hiện sự tồn tại của mình",
-          "Cái riêng là hình thức tồn tại của cái chung",
-          "Cái riêng phong phú hơn cái chung, còn cái chung sâu sắc hơn cái riêng",
-          "Trong quá trình vận động và phát triển của sự vật, cái riêng có thể chuyển hóa thành cái chung và ngược lại",
+          "Nguyên nhân: Sự phát triển của công nghệ thông tin",
+          "Kết quả: Biến đổi to lớn và cơ bản nhiều lĩnh vực trong đời sống kinh tế-xã hội",
+          "Tác động đa chiều: Thay đổi phương thức sản xuất, giao tiếp, học tập, làm việc",
         ],
       },
     ],
@@ -62,27 +62,20 @@ const concepts = [
       {
         type: "methodology",
         points: [
-          "Muốn nhận thức được cái chung, cái bản chất thì phải xuất phát từ cái riêng",
-          "Nhiệm vụ của nhận thức là phải tìm ra cái chung và trong hoạt động thực tiễn phải dựa vào cái chung để cải tạo cái riêng",
-          "Trong hoạt động thực tiễn ta cần chủ động tác động vào sự chuyển hoá cái mới thành cái chung để phát triển nó, và ngược lại cái cũ thành cái đơn nhất để xóa bỏ nó",
+          "Trong hoạt động nhận thức và hoạt động thực tiễn phải bắt đầu từ việc đi tìm những nguyên nhân xuất hiện sự vật, hiện tượng",
+          "Cần phải phân loại các nguyên nhân để có những biện pháp giải quyết đúng đắn",
+          "Phải tận dụng các kết quả đã đạt được để tạo điều kiện thúc đẩy nguyên nhân phát huy tác dụng, nhằm đạt mục đích đã đề ra",
         ],
-      },
-      {
-        type: "application",
-        text: "Từ các nguyên lý chung của Chủ nghĩa Mác - Lênin, Hồ Chí Minh đã vận dụng sáng tạo các nguyên lý đó vào hoàn cảnh lịch sử cụ thể của Việt Nam.",
       },
     ],
   },
 ]
 
-export default function DialecticalMethodology({ onContinue }) {
+export default function CausalityMethodology({ onContinue }) {
   const containerRef = useRef(null)
-  
-
 
   return (
     <div className="h-screen overflow-y-auto bg-gradient-to-br from-indigo-950 via-purple-900 to-fuchsia-900 text-white">
-
       {/* Main content */}
       <div ref={containerRef} className="container mx-auto px-4 pt-10 pb-20 min-h-screen">
         {/* Hero section */}
@@ -94,10 +87,10 @@ export default function DialecticalMethodology({ onContinue }) {
             className="max-w-4xl mx-auto"
           >
             <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-cyan-300 to-fuchsia-300 bg-clip-text text-transparent">
-              Phương Pháp Luận Biện Chứng
+              Nguyên Nhân và Kết Quả
             </h1>
             <p className="text-xl md:text-2xl text-white/80 mb-12 leading-relaxed">
-              Khám phá mối quan hệ giữa cái riêng và cái chung trong triết học biện chứng
+              Khám phá mối quan hệ biện chứng giữa nguyên nhân và kết quả trong triết học
             </p>
             <div className="flex justify-center">
               <a
@@ -226,12 +219,6 @@ function ConceptContent({ item }) {
               </li>
             ))}
           </ul>
-        </div>
-      )
-    case "application":
-      return (
-        <div className="mt-6 p-6 bg-gradient-to-r from-cyan-600/30 to-fuchsia-600/30 rounded-xl border border-white/10 backdrop-blur-sm">
-          <p className="text-lg text-white/90 italic leading-relaxed">"{item.text}"</p>
         </div>
       )
     default:
@@ -422,4 +409,4 @@ function ConceptIllustration({ type }) {
     default:
       return null
   }
-}
+} 

@@ -45,7 +45,7 @@ const levels = [
   },
 ]
 
-function LevelCard({ level, selected, onClick, score }) {
+function LevelCard({ level, selected, onClick}) {
   const [hovered, setHovered] = useState(false)
 
   return (
@@ -65,21 +65,6 @@ function LevelCard({ level, selected, onClick, score }) {
         position: "relative",
       }}
     >
-      {score !== undefined && (
-        <div style={{
-          position: "absolute",
-          top: "10px",
-          right: "10px",
-          backgroundColor: score === 100 ? "#4CAF50" : "#FF6B6B",
-          color: "white",
-          padding: "5px 10px",
-          borderRadius: "10px",
-          fontSize: "14px",
-          fontWeight: "bold",
-        }}>
-          {score}%
-        </div>
-      )}
       <div style={{ display: "flex", alignItems: "center", marginBottom: "20px" }}>
         <div
           style={{
@@ -139,7 +124,7 @@ function LevelCard({ level, selected, onClick, score }) {
   )
 }
 
-export default function LevelSelection({ onSelectLevel, quizScores }) {
+export default function LevelSelection({ onSelectLevel }) {
   const [selectedLevel, setSelectedLevel] = useState(null)
 
   return (
@@ -180,7 +165,6 @@ export default function LevelSelection({ onSelectLevel, quizScores }) {
               setSelectedLevel(level.id)
               onSelectLevel(level.id)
             }}
-            score={quizScores[level.id]}
           />
         ))}
       </div>
