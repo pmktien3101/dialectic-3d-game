@@ -117,8 +117,9 @@ const essenceAndPhenomenonConcepts = [
 ]
 
 export default function Level5Scene({ onBackClick }) {
-    const [showTheory, setShowTheory] = useState(false)
-    const [showPopup, setShowPopup] = useState(false)
+    const [showTheory, setShowTheory] = useState(false);
+    const [showPopup, setShowPopup] = useState(true); // Thay đổi giá trị mặc định thành true
+    const [correctAnswerSelected, setCorrectAnswerSelected] = useState(false);
 
     return (
         <div style={{
@@ -136,14 +137,6 @@ export default function Level5Scene({ onBackClick }) {
                         <OrbitControls />
                         <Environment preset="sunset" />
 
-                        <Image
-                            url="/anhdoinghich.jpg"
-                            scale={[3, 2, 1]}
-                            position={[0, -0.5, 0]}
-                            transparent
-                            onClick={() => setShowPopup(true)}
-                        />
-
                         <Text
                             position={[0, 2, 0]}
                             fontSize={0.5}
@@ -153,18 +146,6 @@ export default function Level5Scene({ onBackClick }) {
                             anchorY="middle"
                         >
                             Phạm Trù Bản Chất - Hiện Tượng
-                        </Text>
-
-                        <Text
-                            position={[0, 1.2, 0]}
-                            fontSize={0.2}
-                            color="#228B22"
-                            textAlign="center"
-                            anchorX="center"
-                            anchorY="middle"
-                            maxWidth={10}
-                        >
-                            Hãy cho tôi biết cảm nhận của bạn về bức ảnh bên dưới
                         </Text>
                     </Canvas>
 
@@ -188,39 +169,95 @@ export default function Level5Scene({ onBackClick }) {
                                 marginBottom: '20px',
                                 lineHeight: '1.5'
                             }}>
-                                <strong>Nói một cách đơn giản</strong>
+                                Chọn câu ca dao tục ngữ phù hợp:
                             </p>
-                            <p style={{
-                                color: '#228B22',
-                                fontSize: '18px',
-                                marginBottom: '20px',
-                                lineHeight: '1.5'
-                            }}>
-                                <strong>Hiện tượng</strong> là cái ta dễ thấy, dễ cảm nhận – như một lớp áo khoác bên ngoài.
-                            </p>
-                            <p style={{
-                                color: '#228B22',
-                                fontSize: '18px',
-                                marginBottom: '20px',
-                                lineHeight: '1.5'
-                            }}>
-                                <strong>Bản chất</strong> là cái sâu hơn – là những đặc điểm ổn định, cốt lõi, quyết định bên trong.
-                            </p>
-                            <button
-                                onClick={() => setShowPopup(false)}
+                            <img
+                                src="/bietmatkbietlong.jpg"
+                                alt="Phạm Trù Bản Chất - Hiện Tượng"
                                 style={{
-                                    marginTop: '20px',
-                                    padding: '8px 16px',
-                                    backgroundColor: '#4CAF50',
-                                    color: 'white',
-                                    border: 'none',
-                                    borderRadius: '5px',
-                                    cursor: 'pointer',
-                                    fontSize: '14px'
+                                    width: '100%',
+                                    maxHeight: '200px',
+                                    objectFit: 'contain',
+                                    marginBottom: '20px',
+                                    border: '5px solid #228B22',
+                                    borderRadius: '10px'
                                 }}
-                            >
-                                Đóng
-                            </button>
+                            />
+                            <div style={{
+                                display: 'grid',
+                                gridTemplateColumns: '1fr 1fr',
+                                gap: '10px',
+                            }}>
+                                <button
+                                    onClick={(e) => {
+                                        e.target.style.backgroundColor = '#f44336';
+                                        e.target.style.color = 'white';
+                                    }}
+                                    style={{
+                                        padding: '10px',
+                                        backgroundColor: 'white',
+                                        color: 'black',
+                                        border: '1px solid #ccc',
+                                        borderRadius: '5px',
+                                        cursor: 'pointer',
+                                        fontSize: '16px'
+                                    }}
+                                >
+                                    A. "Tốt gỗ hơn tốt nước sơn"
+                                </button>
+                                <button
+                                    onClick={(e) => {
+                                        e.target.style.backgroundColor = '#f44336';
+                                        e.target.style.color = 'white';
+                                    }}
+                                    style={{
+                                        padding: '10px',
+                                        backgroundColor: 'white',
+                                        color: 'black',
+                                        border: '1px solid #ccc',
+                                        borderRadius: '5px',
+                                        cursor: 'pointer',
+                                        fontSize: '16px'
+                                    }}
+                                >
+                                    B. "Một con ngựa đau cả tàu bỏ cỏ"
+                                </button>
+                                <button
+                                    onClick={(e) => {
+                                        e.target.style.backgroundColor = '#4CAF50';
+                                        e.target.style.color = 'white';
+                                        setCorrectAnswerSelected(true);
+                                    }}
+                                    style={{
+                                        padding: '10px',
+                                        backgroundColor: 'white',
+                                        color: 'black',
+                                        border: '1px solid #ccc',
+                                        borderRadius: '5px',
+                                        cursor: 'pointer',
+                                        fontSize: '16px'
+                                    }}
+                                >
+                                    C. "Biết người biết mặt, khó biết lòng
+                                </button>
+                                <button
+                                    onClick={(e) => {
+                                        e.target.style.backgroundColor = '#f44336';
+                                        e.target.style.color = 'white';
+                                    }}
+                                    style={{
+                                        padding: '10px',
+                                        backgroundColor: 'white',
+                                        color: 'black',
+                                        border: '1px solid #ccc',
+                                        borderRadius: '5px',
+                                        cursor: 'pointer',
+                                        fontSize: '16px'
+                                    }}
+                                >
+                                    D. "Ăn quả nhớ kẻ trồng cây"
+                                </button>
+                            </div>
                         </div>
                     )}
 
@@ -243,7 +280,7 @@ export default function Level5Scene({ onBackClick }) {
                                 fontWeight: 'bold'
                             }}
                         >
-                            Home
+                            Quay Lại
                         </button>
                     </div>
 
@@ -276,5 +313,5 @@ export default function Level5Scene({ onBackClick }) {
                 <ContentAndForm onContinue={onBackClick} concepts={essenceAndPhenomenonConcepts} />
             )}
         </div>
-    )
-} 
+    );
+}

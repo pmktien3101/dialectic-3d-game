@@ -9,6 +9,7 @@ import GiftBoxScene from "./components/GiftBoxScene"
 import Farm from "./components/Farm"
 import TatNhienVaNganNhien from "./components/TatNhienVaNganNhien"
 import Level5Scene from "./components/Level5Scene"
+import DreamPage from "./components/DreamPage"
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState("mainMenu")
@@ -30,6 +31,8 @@ function App() {
       setCurrentScreen("farm")
     } else if (levelId === 5) {
       setCurrentScreen("level5Scene")
+    } else if (levelId === 6) {
+      setCurrentScreen("dreamPage")
     } else {
       setCurrentScreen("classroom")
     }
@@ -78,6 +81,8 @@ function App() {
         return <Farm onReturnToLevelSelection={handleReturnToLevelSelection} />
       case "level5Scene":
         return <Level5Scene onBackClick={handleContinueAfterMethodology} />
+        case "dreamPage":
+          return <DreamPage onBackClick={handleContinueAfterMethodology} />
       default:
         return <MainMenu onStartGame={handleStartGame} />
     }

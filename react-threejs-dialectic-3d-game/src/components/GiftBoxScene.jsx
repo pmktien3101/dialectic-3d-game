@@ -53,15 +53,15 @@ const contentAndFormConcepts = [
   {
     title: "Mối Quan Hệ Giữa Nội Dung - Hình Thức",
     icon: "relationship",
-    image: "MQHNDHT.jpg",
+    image: "MQHNDHT.png",
     content: [
       {
         type: "relationship",
         points: [
-          "Nội dung và hình thức sẽ \"thống nhất và gắn bó\" với nhau",
-          "Nội dung quyết định hình thức",
-          "Hình thức tác động trở lại nội dung",
-          "Trong quá trình phát triển, nội dung có khuynh hướng chủ đạo là biến đổi, hình thức tương đổi ổn định, bền vững",
+          "Nội dung và hình thức có vai trò gắn bó với nhau",
+          "Một nội dung có thể có nhiều hình thức, và một hình thức có thể chứa đựng nhiều nội dung khác nhau",
+          "Nội dung giữ vai trò quyết định hình thức",
+          "Hình thức tác động ngược lại nội dung",
         ],
       },
     ],
@@ -78,10 +78,6 @@ const contentAndFormConcepts = [
           "2. Cần căn cứ trước hết vào nội dung để xét đoán sự vật",
           "3. Phát huy tính tác động tích cực của hình thức với nội dung",
         ],
-      },
-      {
-        type: "application",
-        text: "Trong công tác tuyên truyền, giáo dục, cần chú trọng cả nội dung tư tưởng và hình thức thể hiện để đạt hiệu quả cao nhất.",
       },
     ],
   },
@@ -104,8 +100,8 @@ export default function GiftBoxScene({ onBackClick }) {
   }
 
   return (
-    <div style={{ 
-      width: '100vw', 
+    <div style={{
+      width: '100vw',
       height: '100vh',
       backgroundColor: '#96CEB4',
       position: 'relative',
@@ -118,22 +114,22 @@ export default function GiftBoxScene({ onBackClick }) {
             <pointLight position={[10, 10, 10]} />
             <OrbitControls />
             <Environment preset="sunset" />
-            
-            <GiftBox 
+
+            <GiftBox
               position={[0, 0, 0]}
               onClick={!isOpen ? handleOpen : undefined}
               isOpen={isOpen}
             />
           </Canvas>
 
-          <div style={{ 
-            position: 'absolute', 
-            top: '20px', 
+          <div style={{
+            position: 'absolute',
+            top: '20px',
             left: '20px',
             zIndex: 1,
             padding: '10px'
           }}>
-            <button 
+            <button
               onClick={onBackClick}
               style={{
                 padding: '10px 20px',
