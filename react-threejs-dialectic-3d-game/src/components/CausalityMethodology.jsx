@@ -150,10 +150,10 @@ function ConceptSection({ concept, index, isEven }) {
 
   // Map concept icons to image paths
   const imageMap = {
-    concept: "/phamtruNDHT.png",
-    example: "/mayden.jpg",
-    relationship: "/TNDL-BCHT.png",
-    methodology: "/YNNDHT.webp"
+    concept: "/ng-ketqua.png",
+    example: "/vidu.png",
+    relationship: "/mhh.png",
+    methodology: "/y-nghia.png"
   }
 
   return (
