@@ -48,9 +48,13 @@ const levels = [
 function LevelCard({ level, selected, onClick}) {
   const [hovered, setHovered] = useState(false)
 
+  const handleClick = () => {
+    onClick(level.id)
+  }
+
   return (
     <div
-      onClick={onClick}
+      onClick={handleClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -161,9 +165,9 @@ export default function LevelSelection({ onSelectLevel }) {
             key={level.id}
             level={level}
             selected={selectedLevel === level.id}
-            onClick={() => {
-              setSelectedLevel(level.id)
-              onSelectLevel(level.id)
+            onClick={(id) => {
+              setSelectedLevel(id)
+              onSelectLevel(id)
             }}
           />
         ))}

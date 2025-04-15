@@ -48,8 +48,8 @@ const concepts = [
         type: "relationship",
         points: [
           "Cái chung chỉ tồn tại trong cái riêng, thông qua cái riêng mà biểu hiện sự tồn tại của mình",
-          "Cái riêng là hình thức tồn tại của cái chung",
-          "Cái riêng phong phú hơn cái chung, còn cái chung sâu sắc hơn cái riêng",
+          "Cái riêng chỉ tồn tại trong mối quan hệ với cái chung, không có cái riêng tồn tại độc lập tuyệt đối tách rời cái chung",
+          "Cái riêng là cái toàn bộ, phong phú hơn cái chung, còn cái chung thì sâu sắc, bản chất hơn cái riêng",
           "Trong quá trình vận động và phát triển của sự vật, cái riêng có thể chuyển hóa thành cái chung và ngược lại",
         ],
       },
@@ -66,11 +66,7 @@ const concepts = [
           "Nhiệm vụ của nhận thức là phải tìm ra cái chung và trong hoạt động thực tiễn phải dựa vào cái chung để cải tạo cái riêng",
           "Trong hoạt động thực tiễn ta cần chủ động tác động vào sự chuyển hoá cái mới thành cái chung để phát triển nó, và ngược lại cái cũ thành cái đơn nhất để xóa bỏ nó",
         ],
-      },
-      {
-        type: "application",
-        text: "Từ các nguyên lý chung của Chủ nghĩa Mác - Lênin, Hồ Chí Minh đã vận dụng sáng tạo các nguyên lý đó vào hoàn cảnh lịch sử cụ thể của Việt Nam.",
-      },
+      }
     ],
   },
 ]

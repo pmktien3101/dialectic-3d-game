@@ -34,7 +34,7 @@ export default function SocialLabGame({ onComplete }) {
 
   const handleLevel2Complete = () => {
     setLevel2Complete(true)
-    onComplete()
+    setGameState("result")
   }
 
   const handleRestart = () => {
@@ -155,19 +155,19 @@ function Level1UI({ onSelection }) {
             onClick={() => onSelection("direct")}
             className="px-4 py-3 bg-green-600/20 border border-green-500/50 text-green-400 rounded-lg text-sm hover:bg-green-600/30 transition-colors"
           >
-            ✅ Kết quả trực tiếp: "Tỷ lệ biết chữ tăng"
+            Kết quả trực tiếp: "Tỷ lệ biết chữ tăng"
           </button>
           <button
             onClick={() => onSelection("indirect")}
             className="px-4 py-3 bg-blue-600/20 border border-blue-500/50 text-blue-400 rounded-lg text-sm hover:bg-blue-600/30 transition-colors"
           >
-            🔄 Kết quả gián tiếp: "GDP tăng sau 10 năm"
+            Kết quả gián tiếp: "GDP tăng sau 10 năm"
           </button>
           <button
             onClick={() => onSelection("reverse")}
             className="px-4 py-3 bg-red-600/20 border border-red-500/50 text-red-400 rounded-lg text-sm hover:bg-red-600/30 transition-colors"
           >
-            ❌ Tác dụng ngược: "Ngân sách y tế bị cắt giảm"
+            Tác dụng ngược: "Ngân sách y tế bị cắt giảm"
           </button>
         </div>
       </div>
@@ -389,14 +389,10 @@ function ResultScreen({ onComplete }) {
         <div className="mb-8 text-gray-300 text-left space-y-4">
           <p>Thông qua các thí nghiệm, bạn đã thấy được:</p>
           <ul className="list-disc pl-5 space-y-2">
-            <li>Mối quan hệ trực tiếp giữa đầu tư giáo dục và tỷ lệ biết chữ</li>
             <li>Tác động gián tiếp của giáo dục đến phát triển kinh tế</li>
             <li>Các nguyên nhân đa chiều của vấn đề thất nghiệp</li>
           </ul>
-          <p className="mt-4">
-            Các hiện tượng xã hội thường có nhiều nguyên nhân và tạo ra nhiều hệ quả phức tạp. Việc phân tích đa chiều
-            giúp chúng ta hiểu rõ hơn và đưa ra các giải pháp hiệu quả.
-          </p>
+          
         </div>
 
         <button

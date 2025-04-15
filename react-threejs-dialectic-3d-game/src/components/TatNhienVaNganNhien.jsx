@@ -5,39 +5,18 @@ import { motion, useInView } from "framer-motion"
 
 const concepts = [
   {
-    title: "Khái Niệm Cơ Bản",
+    title: "Tất Nhiên và Ngẫu Nhiên",
     icon: "concept",
     content: [
-        {
-            type: "definition",
-            title: "Nguyên nhân",
-            text: "là phạm trù dùng để chỉ sự tác động lẫn nhau giữa các mặt trong một sự vật hoặc giữa các sự vật với nhau, gây ra những biến đổi nhất định",
-          },
       {
         type: "definition",
-        title: "Kết quả",
-        text: "Là những biến đổi xuất hiện do tác động của nguyên nhân",
+        title: "Tất nhiên",
+        text: "Là phạm trù dùng để chỉ mối liên hệ bản chất, do những nguyên nhân bên trong của sự vật, hiện tượng quy định và trong điều kiện nhất định nó phải xảy ra như thế chứ không thể khác.",
       },
       {
         type: "definition",
-        title: "Quan hệ biện chứng",
-        text: "Mối liên hệ giữa nguyên nhân và kết quả là mối liên hệ khách quan",
-      }
-    ],
-  },
-  {
-    title: "Tính Chất Của Mối Quan Hệ",
-    icon: "relationship",
-    content: [
-      {
-        type: "relationship",
-        points: [
-          "Mối quan hệ giữa nguyên nhân và kết quả là tất yếu khách quan",
-          "Nguyên nhân là cái sinh ra kết quả",
-          "Nguyên nhân và kết quả có thể chuyển hóa lẫn nhau",
-          "Sự tác động của nguyên nhân đến kết quả có thể theo hai hướng: thuận, nghịch",
-          "Một nguyên nhân có thể sinh ra nhiều kết quả và một kết quả có thể do nhiều nguyên nhân tạo ra",
-        ],
+        title: "Ngẫu nhiên",
+        text: "Là phạm trù dùng để chỉ mối liên hệ không bản chất, do những nguyên nhân bên ngoài, do sự ngẫu hợp của nhiều hoàn cảnh bên ngoài quy định và nó có thể xảy ra hoặc không xảy ra, có thể xảy ra thế này hoặc thế khác.",
       },
     ],
   },
@@ -47,11 +26,32 @@ const concepts = [
     content: [
       {
         type: "example",
-        title: "Cuộc cách mạng công nghệ thông tin",
+        title: "Ví dụ về học tập",
         points: [
-          "Nguyên nhân: Sự phát triển của công nghệ thông tin",
-          "Kết quả: Biến đổi to lớn và cơ bản nhiều lĩnh vực trong đời sống kinh tế-xã hội",
-          "Tác động đa chiều: Thay đổi phương thức sản xuất, giao tiếp, học tập, làm việc",
+          "Để đạt được kết quả nhất trong việc học tập thì cần siêng năng, chăm chỉ là điều tất nhiên",
+          "Tới ngày thi thì mắc vấn đề sức khỏe nên làm bài thi kết quả thấp là điều ngẫu nhiên",
+        ],
+      },
+      {
+        type: "example",
+        title: "Ví dụ về cây trồng",
+        points: [
+          "Quá trình phát triển của cây có thể bị ảnh hưởng bởi thời tiết, cách chăm sóc, hoặc các yếu tố môi trường khác",
+          "Những yếu tố này là ngẫu nhiên vì chúng không phải là nguyên nhân bên trong của cây",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Mối Liên Hệ Biện Chứng",
+    icon: "relationship",
+    content: [
+      {
+        type: "relationship",
+        points: [
+          "Tất nhiên và ngẫu nhiên đều tồn tại khách quan trong sự vận động và phát triển của sự vật, hiện tượng",
+          "Tất nhiên bao giờ cũng vạch đường đi cho ngẫu nhiên, còn ngẫu nhiên là hình thức biểu hiện, đồng thời là cái bổ sung cho tất nhiên",
+          "Trong những điều kiện nhất định, tất nhiên và ngẫu nhiên có thể chuyển hóa lẫn nhau",
         ],
       },
     ],
@@ -63,20 +63,28 @@ const concepts = [
       {
         type: "methodology",
         points: [
-          "Trong hoạt động nhận thức và hoạt động thực tiễn phải bắt đầu từ việc đi tìm những nguyên nhân xuất hiện sự vật, hiện tượng",
-          "Cần phải phân loại các nguyên nhân để có những biện pháp giải quyết đúng đắn",
-          "Phải tận dụng các kết quả đã đạt được để tạo điều kiện thúc đẩy nguyên nhân phát huy tác dụng, nhằm đạt mục đích đã đề ra",
+          "Trong hoạt động thực tiễn, cần phải dựa vào cái tất nhiên vì nó giữ vai trò quyết định trong quá trình phát triển của sự vật, hiện tượng",
+          "Không được bỏ qua cái ngẫu nhiên, không tách rời cái tất nhiên khỏi cái ngẫu nhiên",
+          "Cần xuất phát từ cái ngẫu nhiên để đạt đến cái tất nhiên, và khi dựa vào cái tất nhiên phải chú ý đến cái ngẫu nhiên",
+          "Tất nhiên và ngẫu nhiên có thể chuyển hóa cho nhau. Vì vậy, cần tạo ra những điều kiện nhất định để cản trở hoặc thúc đẩy sự chuyển hóa của chúng theo mục đích nhất định",
         ],
       },
     ],
   },
 ]
 
-export default function CausalityMethodology({ onContinue }) {
+export default function TatNhienVaNganNhien({ onReturnToLevelSelection }) {
   const containerRef = useRef(null)
+  
+  const handleBackToLevelSelection = () => {
+    if (onReturnToLevelSelection) {
+      onReturnToLevelSelection(null)
+    }
+  }
 
   return (
     <div className="h-screen overflow-y-auto bg-gradient-to-br from-indigo-950 via-purple-900 to-fuchsia-900 text-white">
+
       {/* Main content */}
       <div ref={containerRef} className="container mx-auto px-4 pt-10 pb-20 min-h-screen">
         {/* Hero section */}
@@ -88,10 +96,10 @@ export default function CausalityMethodology({ onContinue }) {
             className="max-w-4xl mx-auto"
           >
             <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-cyan-300 to-fuchsia-300 bg-clip-text text-transparent">
-              Nguyên Nhân và Kết Quả
+              Phương Pháp Luận Biện Chứng
             </h1>
             <p className="text-xl md:text-2xl text-white/80 mb-12 leading-relaxed">
-              Khám phá mối quan hệ biện chứng giữa nguyên nhân và kết quả trong triết học
+              Khám phá mối quan hệ giữa tất nhiên và ngẫu nhiên trong triết học biện chứng
             </p>
             <div className="flex justify-center">
               <a
@@ -133,7 +141,7 @@ export default function CausalityMethodology({ onContinue }) {
         {/* Back button */}
         <div className="flex justify-end mb-10">
           <button
-            onClick={onContinue}
+            onClick={handleBackToLevelSelection}
             className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-fuchsia-500 rounded-full text-lg font-medium hover:opacity-90 transition-opacity"
           >
             Chọn chủ đề khác
@@ -220,6 +228,12 @@ function ConceptContent({ item }) {
               </li>
             ))}
           </ul>
+        </div>
+      )
+    case "application":
+      return (
+        <div className="mt-6 p-6 bg-gradient-to-r from-cyan-600/30 to-fuchsia-600/30 rounded-xl border border-white/10 backdrop-blur-sm">
+          <p className="text-lg text-white/90 italic leading-relaxed">"{item.text}"</p>
         </div>
       )
     default:
@@ -410,4 +424,4 @@ function ConceptIllustration({ type }) {
     default:
       return null
   }
-} 
+}

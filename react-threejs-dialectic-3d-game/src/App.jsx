@@ -6,6 +6,8 @@ import DialecticalMethodology from "./components/DialecticalMethodology"
 import CausalityMethodology from "./components/CausalityMethodology"
 import SocialLab from "./components/Sociallab"
 import GiftBoxScene from "./components/GiftBoxScene"
+import Farm from "./components/Farm"
+import TatNhienVaNganNhien from "./components/TatNhienVaNganNhien"
 import Level5Scene from "./components/Level5Scene"
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
       setCurrentScreen("socialLab")
     } else if (levelId === 4) { // If it's the gift box level
       setCurrentScreen("giftBox")
+    } else if (levelId === 3) { // If it's the necessity level
+      setCurrentScreen("farm")
     } else if (levelId === 5) {
       setCurrentScreen("level5Scene")
     } else {
@@ -39,12 +43,18 @@ function App() {
     }))
     if (selectedLevel === 2) { // If it's the causality level
       setCurrentScreen("causalityMethodology")
+    } else if (selectedLevel === 3) { // If it's the necessity level
+      setCurrentScreen("farm")
     } else {
       setCurrentScreen("dialecticalMethodology")
     }
   }
 
   const handleContinueAfterMethodology = () => {
+    setCurrentScreen("levelSelection")
+  }
+
+  const handleReturnToLevelSelection = () => {
     setCurrentScreen("levelSelection")
   }
 
@@ -64,6 +74,8 @@ function App() {
         return <CausalityMethodology onContinue={handleContinueAfterMethodology} />
       case "giftBox":
         return <GiftBoxScene onBackClick={handleContinueAfterMethodology} />
+      case "farm":
+        return <Farm onReturnToLevelSelection={handleReturnToLevelSelection} />
       case "level5Scene":
         return <Level5Scene onBackClick={handleContinueAfterMethodology} />
       default:
