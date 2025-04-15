@@ -7,7 +7,7 @@ const essenceAndPhenomenonConcepts = [
     {
         title: "Khái niệm phạm trù Bản Chất - Hiện Tượng",
         icon: "concept",
-        image: "/phamtruBCHT.png",
+        image: "/banchathientuong.jpg",
         content: [
             {
                 type: "definition",
@@ -98,7 +98,7 @@ const essenceAndPhenomenonConcepts = [
     {
         title: "Ý Nghĩa Phương Pháp Luận Bản Chất - Hiện Tượng",
         icon: "methodology",
-        image: "YNBCHT.webp",
+        image: "",
         content: [
             {
                 type: "methodology",

@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react"
 import { useFrame } from "@react-three/fiber"
 import { Text } from "@react-three/drei"
-import { useSpring, animated } from "@react-spring/three"
+import { motion } from "framer-motion"
 import * as THREE from "three"
 
 export default function GiftBox({ position = [0, 0, 0], onClick, label = "Nội dung & Hình thức" }) {
@@ -23,10 +23,7 @@ export default function GiftBox({ position = [0, 0, 0], onClick, label = "Nội 
   }
 
   // Animation for box scale
-  const { boxScale } = useSpring({
-    boxScale: hovered ? [1.05, 1.05, 1.05] : [1, 1, 1],
-    config: { mass: 1, tension: 280, friction: 60 },
-  })
+  const boxScale = hovered ? [1.05, 1.05, 1.05] : [1, 1, 1]
 
   // Update showContent when hovered or clicked
   useEffect(() => {
@@ -79,10 +76,11 @@ export default function GiftBox({ position = [0, 0, 0], onClick, label = "Nội 
 
   return (
     <>
-      <animated.group
+      <motion.group
         ref={groupRef}
         position={position}
-        scale={boxScale}
+        animate={{ scale: boxScale }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
         onClick={handleBoxClick}
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
@@ -182,7 +180,7 @@ export default function GiftBox({ position = [0, 0, 0], onClick, label = "Nội 
             emissiveIntensity={hovered ? 0.3 : 0}
           />
         </mesh>
-      </animated.group>
+      </motion.group>
 
       {/* Label text - always visible */}
       <Text

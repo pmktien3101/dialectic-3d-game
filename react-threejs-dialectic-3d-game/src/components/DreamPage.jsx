@@ -3,9 +3,84 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Environment, Text, Image } from '@react-three/drei'
 import ContentAndForm from './ContentAndForm'
 
+const essenceAndPhenomenonConcepts = [
+  {
+    title: "Khái niệm phạm trù Khả Năng - Hiện Thực",
+    icon: "concept",
+    image: "/khananghienthuc.jpg",
+    content: [
+      {
+        type: "definition",
+        title: "Hiện thực",
+        text: "Là những gì hiện có, hiện đang tồn tại thực sự. Bao gồm cả hiện thực vật chất (hiện thực khách quan) và hiện thực tinh thần (hiện thực chủ quan)",
+      },
+      {
+        type: "definition",
+        title: "Khả năng",
+        text: "Là những gì hiện có, hiện đang tồn tại thực sự.",
+      }
+    ],
+  },
+  {
+    title: "Ví Dụ",
+    icon: "example",
+    image: "HTKN_VN.png",
+    content: [
+      {
+        type: "example",
+        title: "Ví dụ 1",
+        points: [
+          "Hiện thực: Việt Nam là một nước đang phát triển.",
+          "Khả năng: Việt Nam sẽ trở thành một nước phát triển.",
+        ],
+      },
+      {
+        type: "example",
+        title: "Ví dụ 2",
+        points: [
+          "Hiện thực: Bạn đang đang học môn Mác - Lênin và không hiểu gì hết.",
+          "Khả năng: Trong tương lại bạn sẽ hiểu được môn này và đạt điểm cao trong kỳ thi.",
+          "→ Khả năng này sẽ trở thành hiện thực khi bạn có các điều kiện: nỗ lực học tập, rèn luyện và một chút may mắn trong kỳ thi.",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Mối Quan Hệ Biện Chứng Giữa Khả Năng - Hiện Thực",
+    icon: "relationship",
+    image: "",
+    content: [
+      {
+        type: "relationship",
+        points: [
+          "Khả năng và hiện thực sẽ tồn tại trong mối quan hệ thống nhất, không tách rời, thường xuyên chuyển hoá lẫn nhau trong quá trình phát triển của sự vật.",
+          "Với cùng một sự vật thì trong những điều kiện nhất định, có thể tồn tại đồng thời một số khả năng khác nhau.",
+          "Muốn một khả năng biến thành hiện thực, phải có điều kiện nhất định(điều kiện khách quan, nhân tố chủ quan).",
+          "Nếu xuất hiện điều kiện mới, ở sự vật sẽ xuất hiện thêm những khả năng mới, và những khả năng vốn có cũng sẽ thay đổi."
+        ],
+      },
+    ],
+  },
+
+  {
+    title: "Ý Nghĩa Phương Pháp Luận Khả Năng - Hiện Thực",
+    icon: "methodology",
+    image: "thienthoidialoinhanhoa.jpg",
+    content: [
+      {
+        type: "methodology",
+        points: [
+          "1. Trong nhận thức và thực tiễn phải dựa vào hiện thực để nhận thức và hành động.",
+          "2. Cần nhận thức các khả năng trong hiện thực để có hành động phù hợp trong từng hoàn cảnh.",
+          "3. Phát huy nhân tố chủ quan trong nhận thức và hoạt động để biến khả năng thành hiện thực.",
+        ],
+      },
+    ],
+  },
+]
+
 const DreamPage = ({ onBackClick }) => {
   const [showTheory, setShowTheory] = useState(false)
-  const [showPopup, setShowPopup] = useState(false)
   return (
     <div style={{
       width: '100vw',
@@ -27,7 +102,6 @@ const DreamPage = ({ onBackClick }) => {
               scale={[3, 2, 1]}
               position={[0, -0.5, 0]}
               transparent
-              onClick={() => setShowPopup(true)}
             />
 
             <Text
@@ -49,65 +123,9 @@ const DreamPage = ({ onBackClick }) => {
               anchorY="middle"
               maxWidth={10}
             >
-              Hãy cho tôi biết cảm nhận của bạn về bức ảnh bên dưới
+              Ước Mơ
             </Text>
           </Canvas>
-
-          {showPopup && (
-            <div style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              backgroundColor: 'rgba(255, 255, 255, 0.9)',
-              padding: '20px',
-              borderRadius: '10px',
-              boxShadow: '0 0 10px rgba(0,0,0,0.2)',
-              zIndex: 2,
-              maxWidth: '80%',
-              textAlign: 'center'
-            }}>
-              <p style={{
-                color: '#228B22',
-                fontSize: '22px',
-                marginBottom: '20px',
-                lineHeight: '1.5'
-              }}>
-                <strong>Nói một cách đơn giản</strong>
-              </p>
-              <p style={{
-                color: '#228B22',
-                fontSize: '18px',
-                marginBottom: '20px',
-                lineHeight: '1.5'
-              }}>
-                <strong>Hiện tượng</strong> là cái ta dễ thấy, dễ cảm nhận – như một lớp áo khoác bên ngoài.
-              </p>
-              <p style={{
-                color: '#228B22',
-                fontSize: '18px',
-                marginBottom: '20px',
-                lineHeight: '1.5'
-              }}>
-                <strong>Bản chất</strong> là cái sâu hơn – là những đặc điểm ổn định, cốt lõi, quyết định bên trong.
-              </p>
-              <button
-                onClick={() => setShowPopup(false)}
-                style={{
-                  marginTop: '20px',
-                  padding: '8px 16px',
-                  backgroundColor: '#4CAF50',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
-                  fontSize: '14px'
-                }}
-              >
-                Đóng
-              </button>
-            </div>
-          )}
 
           <div style={{
             position: 'absolute',
@@ -158,8 +176,7 @@ const DreamPage = ({ onBackClick }) => {
           </div>
         </>
       ) : (
-        // <ContentAndForm onContinue={onBackClick} concepts={essenceAndPhenomenonConcepts} />
-        <></>
+        <ContentAndForm onContinue={onBackClick} concepts={essenceAndPhenomenonConcepts} />
       )}
     </div>
   );
