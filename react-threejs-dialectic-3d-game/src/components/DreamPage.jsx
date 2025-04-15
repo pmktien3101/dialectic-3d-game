@@ -17,7 +17,7 @@ const essenceAndPhenomenonConcepts = [
       {
         type: "definition",
         title: "Khả năng",
-        text: "Là những gì hiện có, hiện đang tồn tại thực sự.",
+        text: "Là những gì hiện chưa có, nhưng sẽ có, sẽ tới khi có các điều kiện tương ứng. ",
       }
     ],
   },
