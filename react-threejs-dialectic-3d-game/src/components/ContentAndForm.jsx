@@ -1,10 +1,18 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { motion, useInView } from "framer-motion"
 
-export default function ContentAndForm({ onContinue, concepts }) {
+export default function ContentAndForm({ onContinue, concepts, enableClickable = false }) {
   const containerRef = useRef(null)
+  const [showPopup, setShowPopup] = useState(false)
+  const [popupContent, setPopupContent] = useState(null)
+
+  const handleConceptClick = (content) => {
+    if (!enableClickable) return
+    setPopupContent(content)
+    setShowPopup(true)
+  }
 
   return (
     <div className="h-screen overflow-y-auto bg-gradient-to-br from-indigo-950 via-purple-900 to-fuchsia-900 text-white">
@@ -56,7 +64,14 @@ export default function ContentAndForm({ onContinue, concepts }) {
         <div id="concepts" className="space-y-32 pb-20">
           {concepts.map((concept, index) => {
             const isEven = index % 2 === 0
-            return <ConceptSection key={index} concept={concept} index={index} isEven={isEven} />
+            return <ConceptSection 
+              key={index} 
+              concept={concept} 
+              index={index} 
+              isEven={isEven}
+              enableClickable={enableClickable}
+              onConceptClick={handleConceptClick}
+            />
           })}
         </div>
 
@@ -70,11 +85,64 @@ export default function ContentAndForm({ onContinue, concepts }) {
           </button>
         </div>
       </div>
+
+      {/* Popup */}
+      {showPopup && popupContent && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-8 max-w-2xl w-full mx-4 relative">
+            <button
+              onClick={() => setShowPopup(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 6L6 18"></path>
+                <path d="M6 6l12 12"></path>
+              </svg>
+            </button>
+            
+            {popupContent.type === "definition" && (
+              <>
+                <h3 className="text-2xl font-semibold text-gray-800 mb-4">{popupContent.title}</h3>
+                <p className="text-lg text-gray-600 leading-relaxed">{popupContent.text}</p>
+              </>
+            )}
+            
+            {popupContent.type === "example" && (
+              <>
+                <h3 className="text-2xl font-semibold text-gray-800 mb-4">{popupContent.title}</h3>
+                <ul className="space-y-3">
+                  {popupContent.points.map((point, i) => (
+                    <li key={i} className="flex items-start">
+                      <span className="inline-block w-2 h-2 mt-2.5 mr-3 bg-cyan-400 rounded-full flex-shrink-0"></span>
+                      <p className="text-lg text-gray-600 leading-relaxed">{point}</p>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+            
+            {(popupContent.type === "relationship" || popupContent.type === "methodology") && (
+              <ul className="space-y-3">
+                {popupContent.points.map((point, i) => (
+                  <li key={i} className="flex items-start">
+                    <span className="inline-block w-2 h-2 mt-2.5 mr-3 bg-fuchsia-400 rounded-full flex-shrink-0"></span>
+                    <p className="text-lg text-gray-600 leading-relaxed">{point}</p>
+                  </li>
+                ))}
+              </ul>
+            )}
+            
+            {popupContent.type === "application" && (
+              <p className="text-lg text-gray-600 italic leading-relaxed">"{popupContent.text}"</p>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
 
-function ConceptSection({ concept, index, isEven }) {
+function ConceptSection({ concept, index, isEven, enableClickable, onConceptClick }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: false, amount: 0.3 })
 
@@ -107,7 +175,12 @@ function ConceptSection({ concept, index, isEven }) {
 
         <div className="space-y-6">
           {concept.content.map((item, itemIndex) => (
-            <ConceptContent key={itemIndex} item={item} />
+            <ConceptContent 
+              key={itemIndex} 
+              item={item} 
+              enableClickable={enableClickable}
+              onConceptClick={onConceptClick}
+            />
           ))}
         </div>
       </div>
@@ -115,18 +188,26 @@ function ConceptSection({ concept, index, isEven }) {
   )
 }
 
-function ConceptContent({ item }) {
+function ConceptContent({ item, enableClickable, onConceptClick }) {
+  const contentStyle = enableClickable ? "cursor-pointer hover:bg-white/10 transition-colors" : ""
+
   switch (item.type) {
     case "definition":
       return (
-        <div className="p-6 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm">
+        <div 
+          className={`p-6 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm ${contentStyle}`}
+          onClick={() => onConceptClick(item)}
+        >
           <h3 className="text-2xl font-semibold text-white mb-3">{item.title}</h3>
           <p className="text-lg text-white/80 leading-relaxed">{item.text}</p>
         </div>
       )
     case "example":
       return (
-        <div className="p-6 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm">
+        <div 
+          className={`p-6 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm ${contentStyle}`}
+          onClick={() => onConceptClick(item)}
+        >
           <h3 className="text-2xl font-semibold text-white mb-3">{item.title}</h3>
           <ul className="space-y-3">
             {item.points.map((point, i) => (
@@ -141,7 +222,10 @@ function ConceptContent({ item }) {
     case "relationship":
     case "methodology":
       return (
-        <div className="p-6 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm">
+        <div 
+          className={`p-6 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm ${contentStyle}`}
+          onClick={() => onConceptClick(item)}
+        >
           <ul className="space-y-3">
             {item.points.map((point, i) => (
               <li key={i} className="flex items-start">
@@ -154,7 +238,10 @@ function ConceptContent({ item }) {
       )
     case "application":
       return (
-        <div className="mt-6 p-6 bg-gradient-to-r from-cyan-600/30 to-fuchsia-600/30 rounded-xl border border-white/10 backdrop-blur-sm">
+        <div 
+          className={`mt-6 p-6 bg-gradient-to-r from-cyan-600/30 to-fuchsia-600/30 rounded-xl border border-white/10 backdrop-blur-sm ${contentStyle}`}
+          onClick={() => onConceptClick(item)}
+        >
           <p className="text-lg text-white/90 italic leading-relaxed">"{item.text}"</p>
         </div>
       )

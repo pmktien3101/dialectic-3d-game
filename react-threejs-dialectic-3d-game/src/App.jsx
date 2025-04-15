@@ -6,6 +6,7 @@ import DialecticalMethodology from "./components/DialecticalMethodology"
 import CausalityMethodology from "./components/CausalityMethodology"
 import SocialLab from "./components/Sociallab"
 import GiftBoxScene from "./components/GiftBoxScene"
+import Level5Scene from "./components/Level5Scene"
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState("mainMenu")
@@ -23,6 +24,8 @@ function App() {
       setCurrentScreen("socialLab")
     } else if (levelId === 4) { // If it's the gift box level
       setCurrentScreen("giftBox")
+    } else if (levelId === 5) {
+      setCurrentScreen("level5Scene")
     } else {
       setCurrentScreen("classroom")
     }
@@ -61,6 +64,8 @@ function App() {
         return <CausalityMethodology onContinue={handleContinueAfterMethodology} />
       case "giftBox":
         return <GiftBoxScene onBackClick={handleContinueAfterMethodology} />
+      case "level5Scene":
+        return <Level5Scene onBackClick={handleContinueAfterMethodology} />
       default:
         return <MainMenu onStartGame={handleStartGame} />
     }
