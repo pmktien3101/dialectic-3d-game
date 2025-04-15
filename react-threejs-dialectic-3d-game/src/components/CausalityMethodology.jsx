@@ -148,6 +148,14 @@ function ConceptSection({ concept, index, isEven }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: false, amount: 0.3 })
 
+  // Map concept icons to image paths
+  const imageMap = {
+    concept: "/phamtruNDHT.png",
+    example: "/mayden.jpg",
+    relationship: "/TNDL-BCHT.png",
+    methodology: "/YNNDHT.webp"
+  }
+
   return (
     <motion.section
       ref={ref}
@@ -159,7 +167,11 @@ function ConceptSection({ concept, index, isEven }) {
       {/* Concept illustration */}
       <div className="w-full md:w-2/5">
         <div className="relative aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-purple-500/20 to-fuchsia-500/20 p-6 border border-white/10 backdrop-blur-sm">
-          <ConceptIllustration type={concept.icon} />
+          <img 
+            src={imageMap[concept.icon]} 
+            alt={concept.title}
+            className="w-full h-full object-cover rounded-xl"
+          />
         </div>
       </div>
 

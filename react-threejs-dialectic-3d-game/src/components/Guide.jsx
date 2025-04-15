@@ -8,13 +8,43 @@ export default function Guide({ onClose, onLevelSelect }) {
   const pages = [
     {
       title: "Giới Thiệu",
-      content: "Chào mừng bạn đến với Vườn Cà Phê! Trong trò chơi này, bạn sẽ học về mối quan hệ giữa tính tất nhiên và ngẫu nhiên trong canh tác cà phê."
+      content: "Chào mừng bạn đến với Vườn Cà Phê! Trong trò chơi này, bạn sẽ học về mối quan hệ giữa tính tất nhiên và ngẫu nhiên, cũng như mối quan hệ giữa cái riêng và cái chung trong canh tác cà phê."
     },
     {
-        title: "Cách Chơi",
-        content: "Bạn sẽ được đưa ra các tình huống và cần phân biệt đâu là tính tất nhiên, đâu là tính ngẫu nhiên. Mỗi câu trả lời đúng sẽ được cộng điểm."
+      title: "Cái Riêng và Cái Chung",
+      content: "Trong triết học biện chứng, cái riêng và cái chung có mối quan hệ mật thiết với nhau:",
+      examples: [
+        "Cái riêng: Là những đặc điểm, tính chất riêng biệt của từng cây cà phê, từng vườn cà phê cụ thể",
+        "Cái chung: Là những đặc điểm, quy luật chung của việc trồng và chăm sóc cà phê nói chung",
+        "Mối quan hệ: Cái riêng và cái chung luôn tồn tại trong mối quan hệ biện chứng, trong đó cái chung chỉ tồn tại trong cái riêng và thông qua cái riêng"
+      ],
+      image: {
+        src: "/dialectic-relationship.png",
+        alt: "Mối quan hệ biện chứng giữa cái riêng và cái chung"
       }
-   
+    },
+    {
+      title: "Tính Tất Nhiên",
+      content: "Tính tất nhiên là những yếu tố có thể dự đoán và kiểm soát được trong quá trình canh tác cà phê. Ví dụ:",
+      examples: [
+        "Lượng nước tưới cần thiết cho cây",
+        "Thời gian thu hoạch cà phê",
+        "Cách chăm sóc cây theo mùa"
+      ]
+    },
+    {
+      title: "Tính Ngẫu Nhiên",
+      content: "Tính ngẫu nhiên là những yếu tố không thể dự đoán trước và khó kiểm soát. Ví dụ:",
+      examples: [
+        "Thời tiết thay đổi đột ngột",
+        "Sâu bệnh xuất hiện bất ngờ",
+        "Giá cà phê biến động trên thị trường"
+      ]
+    },
+    {
+      title: "Cách Chơi",
+      content: "Bạn sẽ được đưa ra các tình huống và cần phân biệt đâu là tính tất nhiên, đâu là tính ngẫu nhiên, cũng như nhận diện mối quan hệ giữa cái riêng và cái chung. Mỗi câu trả lời đúng sẽ được cộng điểm."
+    }
   ]
 
   const handleNext = () => {
@@ -33,28 +63,48 @@ export default function Guide({ onClose, onLevelSelect }) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 relative">
-        <div className="absolute top-4 right-4 flex gap-2">
+      <div className="bg-white rounded-xl p-8 max-w-2xl w-full mx-4 relative shadow-2xl">
+        <div className="absolute top-4 right-4">
           <button 
             onClick={onClose}
-            className="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-md transition-colors"
+            className="w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full transition-colors"
           >
             ✕
           </button>
         </div>
 
-        <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold mb-4">{pages[currentPage].title}</h2>
-          <p className="text-lg text-gray-700">{pages[currentPage].content}</p>
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold mb-4 text-gray-800">{pages[currentPage].title}</h2>
+          <p className="text-lg text-gray-700 mb-4">{pages[currentPage].content}</p>
+          
+          {pages[currentPage].image && (
+            <div className="my-6">
+              <img 
+                src={pages[currentPage].image.src} 
+                alt={pages[currentPage].image.alt}
+                className="mx-auto max-w-full h-auto rounded-lg shadow-md"
+              />
+            </div>
+          )}
+          
+          {pages[currentPage].examples && (
+            <div className="mt-6 space-y-3">
+              {pages[currentPage].examples.map((example, index) => (
+                <div key={index} className="bg-blue-50 p-4 rounded-lg text-left">
+                  <p className="text-blue-800">• {example}</p>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center mt-8">
           <button
             onClick={handlePrev}
             disabled={currentPage === 0}
-            className={`px-6 py-2 rounded-md transition-colors ${
+            className={`px-6 py-2 rounded-lg transition-colors ${
               currentPage === 0 
-                ? 'bg-gray-200 text-gray-400 cursor-not-allowed' 
+                ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
                 : 'bg-blue-500 text-white hover:bg-blue-600'
             }`}
           >
@@ -65,7 +115,7 @@ export default function Guide({ onClose, onLevelSelect }) {
             {pages.map((_, index) => (
               <div
                 key={index}
-                className={`w-2 h-2 rounded-full ${
+                className={`w-3 h-3 rounded-full transition-colors ${
                   index === currentPage ? 'bg-blue-500' : 'bg-gray-300'
                 }`}
               />
@@ -74,9 +124,9 @@ export default function Guide({ onClose, onLevelSelect }) {
 
           <button
             onClick={handleNext}
-            className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
+            className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
           >
-            {currentPage === pages.length - 1 ? 'Đã hiểu' : 'Tiếp tục'}
+            {currentPage === pages.length - 1 ? 'Bắt đầu' : 'Tiếp tục'}
           </button>
         </div>
       </div>
