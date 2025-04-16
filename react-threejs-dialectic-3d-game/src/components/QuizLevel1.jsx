@@ -43,10 +43,11 @@ const questions = [
   {
     question: "Điểm riêng của Anh A là gì?",
     options: [
+       "Có giọng Bắc",
       "Sáng học Triết, tối lướt TikTok",
       "Trời 28°C đã kêu 'lạnh quá'",
-      "Là sinh viên học Triết học",
-      "Có giọng Nam"
+      "Là sinh viên học Triết học"
+     
     ],
     correctAnswer: 0,
     explanation: "Anh A đến từ Hà Nội và có giọng Bắc và có thói quen sáng học Triết thì tối lướt TikTok, đây là điểm riêng của anh ấy."

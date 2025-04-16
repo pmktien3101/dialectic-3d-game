@@ -12,13 +12,11 @@ export function Student({ position = [0, 0, 0], rotation = [0, 0, 0], name = "St
       return [
         "Là sinh viên học Triết học",
         "Đến từ Hà Nội",
-        "Sáng học Triết, tối lướt TikTok",
         "Nói Giọng Bắc"
       ]
     } else if (name === "Chị Nguyễn Thị B") {
       return [
         "Là sinh viên học Triết học",
-        "Nói 'gì cũng được' nhưng cái gì cũng ghét",
         "Đến từ TP.HCM",
         "Nói Giọng Nam"
       ]

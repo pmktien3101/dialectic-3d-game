@@ -95,7 +95,7 @@ function IntroScreen({ onStart }) {
         transition={{ duration: 0.8 }}
         className="bg-gray-900/90 backdrop-blur-md p-8 rounded-xl max-w-2xl text-center border border-cyan-500/30"
       >
-        <h1 className="text-4xl font-bold text-white mb-4">PHÒNG THÍ NGHIỆM BIẾN ĐỔI XÃ HỘI</h1>
+        <h1 className="text-4xl font-bold text-white mb-4">PHÒNG THÍ NGHIỆM</h1>
         <p className="text-cyan-300 text-xl mb-6">Khám phá mối quan hệ nhân quả trong các yếu tố xã hội</p>
 
         <div className="mb-8 text-gray-300 text-left space-y-4">
@@ -389,6 +389,7 @@ function ResultScreen({ onComplete }) {
         <div className="mb-8 text-gray-300 text-left space-y-4">
           <p>Thông qua các thí nghiệm, bạn đã thấy được:</p>
           <ul className="list-disc pl-5 space-y-2">
+          <li>Tác động trực tiếp của giáo dục đến tỷ lệ biết chữ</li>
             <li>Tác động gián tiếp của giáo dục đến phát triển kinh tế</li>
             <li>Các nguyên nhân đa chiều của vấn đề thất nghiệp</li>
           </ul>

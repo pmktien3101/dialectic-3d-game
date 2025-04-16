@@ -17,11 +17,6 @@ const concepts = [
         type: "definition",
         title: "Kết quả",
         text: "Là những biến đổi xuất hiện do tác động của nguyên nhân",
-      },
-      {
-        type: "definition",
-        title: "Quan hệ biện chứng",
-        text: "Mối liên hệ giữa nguyên nhân và kết quả là mối liên hệ khách quan",
       }
     ],
   },
@@ -33,10 +28,10 @@ const concepts = [
         type: "relationship",
         points: [
           "Mối quan hệ giữa nguyên nhân và kết quả là tất yếu khách quan",
-          "Nguyên nhân là cái sinh ra kết quả",
-          "Nguyên nhân và kết quả có thể chuyển hóa lẫn nhau",
-          "Sự tác động của nguyên nhân đến kết quả có thể theo hai hướng: thuận, nghịch",
+          "Nguyên nhân có trước, là cái sinh ra kết quả",
           "Một nguyên nhân có thể sinh ra nhiều kết quả và một kết quả có thể do nhiều nguyên nhân tạo ra",
+          "Nguyên nhân tạo ra kết quả nhưng kết quả này lại là nguyên nhân của một kết quả khác",
+
         ],
       },
     ],
@@ -63,9 +58,10 @@ const concepts = [
       {
         type: "methodology",
         points: [
-          "Trong hoạt động nhận thức và hoạt động thực tiễn phải bắt đầu từ việc đi tìm những nguyên nhân xuất hiện sự vật, hiện tượng",
-          "Cần phải phân loại các nguyên nhân để có những biện pháp giải quyết đúng đắn",
-          "Phải tận dụng các kết quả đã đạt được để tạo điều kiện thúc đẩy nguyên nhân phát huy tác dụng, nhằm đạt mục đích đã đề ra",
+          "Muốn tìm nguyên nhân của một hiện tượng nào đó cần tìm những sự kiện xảy ra trước khi hiện tượng đó xuất hiện.Và muốn loại bỏ kết quả nào đó, cần loại bỏ nguyên nhân làm nảy sinh ra nó",
+          "Cần phải phân loại các nguyên nhân để có những biện pháp giải quyết đúng đắn. Kết hợp tạo ra nhiều nguyên nhân tích cực để thúc đẩy hình thành kết quả tích cực. Triệt tiêu các nguyên nhân tiêu cực để hạn chế kết quả không mong muốn",
+          "Phải tìm ra những kết quả nào là kết quả chính kết quả phụ, cơ bản và không cơ bản",
+          "Trong hoạt động thực tiễn cần phải có tầm nhìn điều chỉnh nguyên nhân ban đầu để định hướng kết quả trong tương lai"
         ],
       },
     ],
@@ -170,7 +166,7 @@ function ConceptSection({ concept, index, isEven }) {
           <img 
             src={imageMap[concept.icon]} 
             alt={concept.title}
-            className="w-full h-full object-cover rounded-xl"
+            className="w-full h-full object-contain rounded-xl"
           />
         </div>
       </div>
