@@ -36,7 +36,7 @@ const essenceAndPhenomenonConcepts = [
                 title: "Ví dụ về con người",
                 points: [
                     "Bản chất: Người lương thiện tốt bụng.",
-                    "Hiện tượng: Nhặt được của rơi sẽ tìm người trả lời, giúp đỡ người gặp khó khăn",
+                    "Hiện tượng: Nhặt được của rơi sẽ tìm người trả lại, giúp đỡ người gặp khó khăn",
                 ],
             },
             {

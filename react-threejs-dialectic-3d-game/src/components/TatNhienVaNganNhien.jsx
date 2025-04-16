@@ -156,9 +156,9 @@ function ConceptSection({ concept, index, isEven }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: false, amount: 0.3 })
   const imageMap = {
-    concept: "/phamtruNDHT.png",
-    example: "/mayden.jpg",
-    relationship: "/TNDL-BCHT.png",
+    concept: "/tnnn.png",
+    example: "/tnnn2.png",
+    relationship: "/tnnn3.png",
     methodology: "/YNNDHT.webp"
   }
   return (
