@@ -31,15 +31,7 @@ const concepts = [
           "Để đạt được kết quả nhất trong việc học tập thì cần siêng năng, chăm chỉ là điều tất nhiên",
           "Tới ngày thi thì mắc vấn đề sức khỏe nên làm bài thi kết quả thấp là điều ngẫu nhiên",
         ],
-      },
-      {
-        type: "example",
-        title: "Ví dụ về cây trồng",
-        points: [
-          "Quá trình phát triển của cây có thể bị ảnh hưởng bởi thời tiết, cách chăm sóc, hoặc các yếu tố môi trường khác",
-          "Những yếu tố này là ngẫu nhiên vì chúng không phải là nguyên nhân bên trong của cây",
-        ],
-      },
+      }
     ],
   },
   {
