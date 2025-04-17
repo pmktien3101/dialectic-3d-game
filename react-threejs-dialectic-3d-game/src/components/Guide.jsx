@@ -8,20 +8,7 @@ export default function Guide({ onClose, onLevelSelect }) {
   const pages = [
     {
       title: "Giới Thiệu",
-      content: "Chào mừng bạn đến với Vườn Cà Phê! Trong trò chơi này, bạn sẽ học về mối quan hệ giữa tính tất nhiên và ngẫu nhiên, cũng như mối quan hệ giữa cái riêng và cái chung trong canh tác cà phê."
-    },
-    {
-      title: "Cái Riêng và Cái Chung",
-      content: "Trong triết học biện chứng, cái riêng và cái chung có mối quan hệ mật thiết với nhau:",
-      examples: [
-        "Cái riêng: Là những đặc điểm, tính chất riêng biệt của từng cây cà phê, từng vườn cà phê cụ thể",
-        "Cái chung: Là những đặc điểm, quy luật chung của việc trồng và chăm sóc cà phê nói chung",
-        "Mối quan hệ: Cái riêng và cái chung luôn tồn tại trong mối quan hệ biện chứng, trong đó cái chung chỉ tồn tại trong cái riêng và thông qua cái riêng"
-      ],
-      image: {
-        src: "/dialectic-relationship.png",
-        alt: "Mối quan hệ biện chứng giữa cái riêng và cái chung"
-      }
+      content: "Chào mừng bạn đến với Vườn Cà Phê! Trong trò chơi này, bạn sẽ học về mối quan hệ giữa tính tất nhiên và ngẫu nhiên."
     },
     {
       title: "Tính Tất Nhiên",
@@ -43,7 +30,7 @@ export default function Guide({ onClose, onLevelSelect }) {
     },
     {
       title: "Cách Chơi",
-      content: "Bạn sẽ được đưa ra các tình huống và cần phân biệt đâu là tính tất nhiên, đâu là tính ngẫu nhiên, cũng như nhận diện mối quan hệ giữa cái riêng và cái chung. Mỗi câu trả lời đúng sẽ được cộng điểm."
+      content: "Bạn sẽ được đưa ra các tình huống và cần phân biệt đâu là tính tất nhiên. Mỗi câu trả lời đúng sẽ được cộng điểm."
     }
   ]
 
